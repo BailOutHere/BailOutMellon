@@ -119,7 +119,7 @@ class FrameHandlerClass:
             bytes_read += 2
             if int.from_bytes(frame_handler_frame.scb_blk_len_byte, byteorder='little') <= 3:
                 frame_handler_frame.scb_blk_data_bytes = self.serial_line.read(int.from_bytes(frame_handler_frame.scb_blk_len_byte, byteorder='little') - 2) 
-                bytes_read += int.from_bytes(frame_handler_frame.scb_blk_len_byte - 2, byteorder='little') 
+                bytes_read += int.from_bytes(frame_handler_frame.scb_blk_len_byte, byteorder='little') - 2
 
         frame_handler_frame.command_byte = self.serial_line.read(1)
 
